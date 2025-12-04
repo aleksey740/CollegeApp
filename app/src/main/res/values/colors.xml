@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="grade_5">#4CAF50</color>
+    <color name="grade_4">#8BC34A</color>
+    <color name="grade_3">#FFC107</color>
+    <color name="grade_2">#F44336</color>
+    <color name="light_gray">#F0F0F0</color>
+
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+
+    <!-- Цвета для типов событий -->
+    <color name="lecture_color">#FF4CAF50</color>
+    <color name="practice_color">#FF2196F3</color>
+    <color name="exam_color">#FFF44336</color>
+    <color name="meeting_color">#FFFF9800</color>
+    <color name="holiday_color">#FF9C27B0</color>
+    <color name="other_color">#FF607D8B</color>
+
+    <color name="schedule_monday">#FFF8BBD0</color>
+    <color name="schedule_tuesday">#FFBBDEFB</color>
+    <color name="schedule_wednesday">#FFC8E6C9</color>
+    <color name="schedule_thursday">#FFF0F4C3</color>
+    <color name="schedule_friday">#FFFFF9C4</color>
+    <color name="schedule_saturday">#FFE1BEE7</color>
+
+    <color name="time_slot_morning">#FFE3F2FD</color>
+    <color name="time_slot_day">#FFF3E5F5</color>
+    <color name="time_slot_evening">#FFF1F8E9</color>
+</resources>

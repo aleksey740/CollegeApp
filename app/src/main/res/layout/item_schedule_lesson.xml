@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="80dp"
+    android:layout_height="60dp"
+    android:layout_margin="1dp"
+    app:cardCornerRadius="4dp"
+    app:cardElevation="2dp"
+    android:background="?attr/selectableItemBackground"
+    android:clickable="true"
+    android:focusable="true"
+    android:foreground="?attr/selectableItemBackground">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="4dp">
+
+        <!-- Индикатор типа занятия -->
+        <View
+            android:id="@+id/typeIndicator"
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:background="@color/lecture_color" />
+
+        <!-- Предмет -->
+        <TextView
+            android:id="@+id/subjectText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Предмет"
+            android:textSize="10sp"
+            android:textStyle="bold"
+            android:maxLines="1"
+            android:ellipsize="end" />
+
+        <!-- Преподаватель -->
+        <TextView
+            android:id="@+id/teacherText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Преподаватель"
+            android:textSize="8sp"
+            android:maxLines="1"
+            android:ellipsize="end" />
+
+        <!-- Аудитория -->
+        <TextView
+            android:id="@+id/classroomText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Ауд. 101"
+            android:textSize="8sp"
+            android:textStyle="italic" />
+
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>

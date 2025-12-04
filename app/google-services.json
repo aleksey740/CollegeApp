@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "919903419840",
+    "project_id": "collegeapp-77e81",
+    "storage_bucket": "collegeapp-77e81.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:919903419840:android:3abb8c3e45f9c27d5e1c25",
+        "android_client_info": {
+          "package_name": "com.sakovich.collegeapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCwrU5l-RU89TxeZ6iQQCGNkhgZeMVPxRE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
