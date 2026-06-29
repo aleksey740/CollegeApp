@@ -6,7 +6,8 @@ data class Student(
     val fullName: String = "",
     val groupId: String = "",
     val groupName: String = "",
-    val avatar: String = ""
+    val avatar: String = "",
+    val isHeadman: Boolean = false
 ) {
-    constructor() : this("", "", "", "", "", "")
+    constructor() : this("", "", "", "", "", "", false)
 }

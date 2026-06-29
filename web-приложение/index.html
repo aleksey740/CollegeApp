@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#020617">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Помощник куратора">
+  <title>Помощник куратора</title>
+  <link rel="icon" href="icons/icon-192.png" type="image/png">
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="css/styles.css?v=11">
+</head>
+<body>
+  <div id="app">
+    <div class="auth-page auth-page--login">
+      <div class="auth-title">Помощник куратора</div>
+      <div class="auth-subtitle">Добро пожаловать!</div>
+      <div class="auth-card">
+        <h2 class="auth-card-title">Вход</h2>
+        <label class="form-label" for="email">Email</label>
+        <input class="form-input auth-input" id="email" type="email" placeholder="example@email.com" autocomplete="email">
+        <span class="field-error" id="emailError"></span>
+        <label class="form-label" for="password">Пароль</label>
+        <div class="password-wrap">
+          <input class="form-input auth-input" id="password" type="password" placeholder="••••••••" autocomplete="current-password">
+          <button type="button" class="password-toggle" aria-label="Показать пароль">👁</button>
+        </div>
+        <span class="field-error" id="passwordError"></span>
+        <button class="btn-primary" id="loginBtn" type="button">Войти</button>
+        <div class="spinner" id="loginSpinner"></div>
+      </div>
+      <div class="auth-footer">Нет аккаунта? <a href="#register" id="linkRegister">Создать</a></div>
+      <p class="auth-consent auth-consent--login">Входя в приложение, вы соглашаетесь с <a href="#privacy" data-route="privacy">Политикой конфиденциальности</a>.</p>
+    </div>
+  </div>
+  <div id="toast" class="toast hidden"></div>
+
+  <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
+  <script src="js/config.js?v=11"></script>
+  <script src="js/utils.js?v=11"></script>
+  <script src="js/db.js?v=11"></script>
+  <script src="js/ui.js?v=11"></script>
+  <script src="js/app.js?v=11"></script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    
+    <string-array name="days_array">
+        <item>Понедельник</item>
+        <item>Вторник</item>
+        <item>Среда</item>
+        <item>Четверг</item>
+        <item>Пятница</item>
+        <item>Суббота</item>
+    </string-array>
+
+    
+    <string-array name="types_array">
+        <item>Лекция</item>
+        <item>Практика</item>
+        <item>Лабораторная</item>
+        <item>Семинар</item>
+        <item>Консультация</item>
+        <item>Экзамен</item>
+        <item>Зачет</item>
+    </string-array>
+</resources>

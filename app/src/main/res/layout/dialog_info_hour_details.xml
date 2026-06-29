@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="#1E293B"
+    android:padding="20dp">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:maxHeight="280dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="4dp">
+
+            <TextView
+                android:id="@+id/typeBadge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Информационный час"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            android:textColor="@android:color/white"
+            android:paddingHorizontal="10dp"
+            android:paddingVertical="4dp"
+            android:background="@drawable/bg_type_badge" />
+
+            <TextView
+                android:id="@+id/topicText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF"
+            android:maxLines="3"
+            android:ellipsize="end" />
+
+            <TextView
+                android:id="@+id/dateTimeText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:textSize="14sp"
+            android:textColor="#C4B5FD" />
+
+            <TextView
+                android:id="@+id/roomText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:textSize="14sp"
+            android:textColor="#E2E8F0" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginVertical="12dp"
+                android:background="#334155" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Закреплённые учащиеся"
+                android:textSize="13sp"
+                android:textStyle="bold"
+                android:textColor="#E2E8F0" />
+
+            <TextView
+                android:id="@+id/studentsText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:textSize="13sp"
+                android:textColor="#CBD5F5" />
+        </LinearLayout>
+    </ScrollView>
+
+    
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/actionEdit"
+        style="@style/Widget.Material3.Button.TonalButton"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginTop="16dp"
+        android:text="Редактировать"
+        android:textColor="#E2E8F0"
+        app:backgroundTint="#334155"
+        app:cornerRadius="12dp"
+        app:icon="@android:drawable/ic_menu_edit"
+        app:iconTint="#94A3B8"
+        app:iconGravity="textStart"
+        app:iconSize="20dp" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/actionDelete"
+        style="@style/Widget.Material3.Button.TonalButton"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginTop="10dp"
+        android:text="Удалить"
+        android:textColor="#FCA5A5"
+        app:backgroundTint="#334155"
+        app:cornerRadius="12dp"
+        app:icon="@android:drawable/ic_menu_delete"
+        app:iconTint="#F87171"
+        app:iconGravity="textStart"
+        app:iconSize="20dp" />
+</LinearLayout>

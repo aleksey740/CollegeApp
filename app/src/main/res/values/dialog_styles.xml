@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    
+    <style name="ShapeAppearance.App.Dialog" parent="ShapeAppearance.Material3.MediumComponent">
+        <item name="cornerSize">20dp</item>
+    </style>
+
+    
+    <style name="MaterialAlertDialog.App" parent="MaterialAlertDialog.Material3">
+        <item name="shapeAppearance">@style/ShapeAppearance.App.Dialog</item>
+        <item name="shapeAppearanceOverlay">@null</item>
+        <item name="backgroundTint">#1E293B</item>
+    </style>
+
+    
+    <style name="Widget.App.Dialog" parent="Widget.Material3.Button.TextButton.Dialog">
+        <item name="android:textColor">#94A3B8</item>
+        <item name="cornerRadius">12dp</item>
+    </style>
+
+    
+    <style name="Widget.App.Dialog.Button.Positive" parent="Widget.Material3.Button.TextButton.Dialog">
+        <item name="android:textColor">#A78BFA</item>
+        <item name="cornerRadius">12dp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    
+    <style name="Widget.App.Dialog.Button.Negative" parent="Widget.Material3.Button.TextButton.Dialog">
+        <item name="android:textColor">#94A3B8</item>
+        <item name="cornerRadius">12dp</item>
+        <item name="android:textAllCaps">false</item>
+    </style>
+
+    
+    <style name="ThemeOverlay.App.BottomSheet.Stickers" parent="ThemeOverlay.Material3.BottomSheetDialog" />
+
+    
+    <style name="ThemeOverlay.App.MaterialAlertDialog" parent="ThemeOverlay.Material3.MaterialAlertDialog">
+        <item name="alertDialogStyle">@style/MaterialAlertDialog.App</item>
+        <item name="materialAlertDialogBodyTextStyle">@style/TextAppearance.App.Dialog.Body</item>
+        <item name="materialAlertDialogTitleTextStyle">@style/TextAppearance.App.Dialog.Title</item>
+        <item name="buttonBarPositiveButtonStyle">@style/Widget.App.Dialog.Button.Positive</item>
+        <item name="buttonBarNegativeButtonStyle">@style/Widget.App.Dialog.Button.Negative</item>
+        <item name="buttonBarNeutralButtonStyle">@style/Widget.App.Dialog.Button.Negative</item>
+        
+        
+        <item name="colorSurface">#1E293B</item>
+        <item name="colorOnSurface">#F1F5F9</item>
+        <item name="colorSurfaceVariant">#334155</item>
+        <item name="colorOnSurfaceVariant">#CBD5E1</item>
+        <item name="colorPrimary">#8B5CF6</item>
+        <item name="colorOnPrimary">#FFFFFF</item>
+    </style>
+
+    <style name="TextAppearance.App.Dialog.Title" parent="MaterialAlertDialog.Material3.Title.Text">
+        <item name="android:textColor">#F1F5F9</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="TextAppearance.App.Dialog.Body" parent="MaterialAlertDialog.Material3.Body.Text">
+        <item name="android:textColor">#CBD5E1</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    
+    <style name="Widget.App.Dialog.Content">
+        <item name="android:padding">20dp</item>
+    </style>
+</resources>

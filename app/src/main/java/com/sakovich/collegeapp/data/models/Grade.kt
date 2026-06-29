@@ -7,13 +7,29 @@ data class Grade(
     val subject: String = "",
     val value: Int = 0,
     val date: String = "",
-    val type: String = "", // "экзамен", "зачет", "лабораторная", "тест"
+    val type: String = "",
     val teacherId: String = "",
     val teacherName: String = "",
     val comment: String = "",
+    val semester: Int = 1,
     val createdAt: Long = System.currentTimeMillis()
 ) {
-    constructor() : this("", "", "", "", 0, "", "", "", "", "", 0)
+    constructor() : this("", "", "", "", 0, "", "", "", "", "", 1, 0)
+
+    companion object {
+
+        const val VALUE_ABSENCE = -1
+    }
+
+    fun isAbsence(): Boolean = value == VALUE_ABSENCE
+
+    fun typeDisplayLabel(): String {
+        val t = type.trim()
+        return when {
+            t.isEmpty() || t.equals("Журнал", ignoreCase = true) -> "Обычная"
+            else -> t
+        }
+    }
 
     fun toMap(): Map<String, Any> {
         return mapOf(
@@ -26,6 +42,7 @@ data class Grade(
             "teacherId" to teacherId,
             "teacherName" to teacherName,
             "comment" to comment,
+            "semester" to semester,
             "createdAt" to createdAt
         )
     }

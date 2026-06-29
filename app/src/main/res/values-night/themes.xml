@@ -1,7 +1,40 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
-    <style name="Base.Theme.CollegeApp" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your dark theme here. -->
-        <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
+    
+    <style name="Base.Theme.CollegeApp" parent="Theme.Material3.Dark.NoActionBar">
+        
+        <item name="colorPrimary">#8B5CF6</item>
+        <item name="colorPrimaryVariant">#6D28D9</item>
+        <item name="colorOnPrimary">#FFFFFF</item>
+        
+        
+        <item name="colorSecondary">#818CF8</item>
+        <item name="colorSecondaryVariant">#6366F1</item>
+        <item name="colorOnSecondary">#FFFFFF</item>
+        
+        
+        <item name="colorTertiary">#22D3EE</item>
+        <item name="colorOnTertiary">#0F172A</item>
+        
+        
+        <item name="android:colorBackground">#020617</item>
+        <item name="colorSurface">#1E293B</item>
+        <item name="colorOnSurface">#F8FAFC</item>
+        <item name="colorSurfaceVariant">#334155</item>
+        <item name="colorOnSurfaceVariant">#94A3B8</item>
+        
+        
+        <item name="colorError">#FB7185</item>
+        <item name="colorOnError">#FFFFFF</item>
+        
+        
+        <item name="colorOutline">#334155</item>
+        <item name="colorOutlineVariant">#1E293B</item>
+        
+        
+        <item name="materialAlertDialogTheme">@style/ThemeOverlay.App.MaterialAlertDialog</item>
+        <item name="alertDialogTheme">@style/ThemeOverlay.App.MaterialAlertDialog</item>
+        
+        
+        <item name="materialButtonStyle">@style/Widget.App.Button</item>
     </style>
 </resources>
