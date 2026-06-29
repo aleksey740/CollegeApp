@@ -1,0 +1,879 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_app_gradient">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/catalogHeaderLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_header_gradient"
+                android:orientation="vertical"
+                android:paddingHorizontal="20dp"
+                android:paddingTop="14dp"
+                android:paddingBottom="22dp"
+                android:clipToPadding="false"
+                android:clipChildren="false">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <ImageButton
+                        android:id="@+id/catalogBackButton"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_marginEnd="10dp"
+                        android:background="@null"
+                        android:foreground="@null"
+                        android:padding="0dp"
+                        android:scaleType="center"
+                        android:tint="#FFFFFF"
+                        app:srcCompat="@drawable/ic_chevron_left"
+                        android:contentDescription="Назад"
+                        android:visibility="visible" />
+
+                    <TextView
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:gravity="center"
+                        android:text="📚"
+                        android:textSize="26sp"
+                        android:background="@drawable/bg_icon_green" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginStart="12dp"
+                        android:gravity="center_vertical"
+                        android:text="Учебный справочник группы"
+                        android:textColor="@color/text_primary_dark"
+                        android:textSize="19sp"
+                        android:textStyle="bold"
+                        android:maxLines="3"
+                        android:includeFontPadding="false"
+                        android:lineSpacingMultiplier="1.05"
+                        android:lineSpacingExtra="2dp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingHorizontal="16dp"
+                android:paddingTop="12dp"
+                android:paddingBottom="24dp">
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="12dp"
+                    app:cardBackgroundColor="@color/surface_card"
+                    app:cardCornerRadius="20dp"
+                    app:cardElevation="4dp"
+                    app:strokeWidth="1dp"
+                    app:strokeColor="@color/border_subtle">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="16dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:gravity="center"
+                                android:text="👥"
+                                android:textSize="20sp"
+                                android:background="@drawable/bg_icon_blue" />
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:layout_marginStart="12dp"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Лимиты на группу"
+                                    android:textColor="@color/text_primary_dark"
+                                    android:textSize="17sp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="2dp"
+                                    android:text="Пустое поле — без ограничения по показателю"
+                                    android:textColor="@color/text_secondary_dark"
+                                    android:textSize="12sp"
+                                    android:lineSpacingMultiplier="1.15" />
+                            </LinearLayout>
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginTop="14dp"
+                            android:layout_marginBottom="4dp"
+                            android:background="@drawable/bg_catalog_divider" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:orientation="horizontal"
+                            android:visibility="gone">
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                app:boxBackgroundColor="#0F172A"
+                                app:boxBackgroundMode="filled"
+                                app:boxStrokeColor="#334155">
+
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:id="@+id/groupInput"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:hint="Новая группа"
+                                    android:textColor="#FFFFFF" />
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                            <com.google.android.material.button.MaterialButton
+                                android:id="@+id/addGroupButton"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:text="+"
+                                app:backgroundTint="#8B5CF6"
+                                app:cornerRadius="12dp" />
+                        </LinearLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/groupLimitTeacherLayout"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="12dp"
+                            android:hint="Лимит кураторов"
+                            app:boxBackgroundColor="#0F172A"
+                            app:boxBackgroundMode="filled"
+                            app:boxStrokeColor="#334155">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/groupLimitTeacherInput"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:inputType="number"
+                                android:textColor="#FFFFFF" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/groupLimitStudentLayout"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:hint="Лимит учащихся (старосты входят)"
+                            app:boxBackgroundColor="#0F172A"
+                            app:boxBackgroundMode="filled"
+                            app:boxStrokeColor="#334155">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/groupLimitStudentInput"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:inputType="number"
+                                android:textColor="#FFFFFF" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/groupLimitHeadmanLayout"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:hint="Лимит старост"
+                            app:boxBackgroundColor="#0F172A"
+                            app:boxBackgroundMode="filled"
+                            app:boxStrokeColor="#334155">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/groupLimitHeadmanInput"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:inputType="number"
+                                android:textColor="#FFFFFF" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/setGroupLimitsButton"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="16dp"
+                            android:text="Установить лимит"
+                            android:textAllCaps="false"
+                            android:textColor="@color/white"
+                            app:backgroundTint="@color/accent_emerald"
+                            app:cornerRadius="14dp" />
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="12dp"
+                    app:cardBackgroundColor="@color/surface_card"
+                    app:cardCornerRadius="20dp"
+                    app:cardElevation="4dp"
+                    app:strokeWidth="1dp"
+                    app:strokeColor="@color/border_subtle">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="16dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:gravity="center"
+                                android:text="📘"
+                                android:textSize="20sp"
+                                android:background="@drawable/bg_icon_green" />
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:layout_marginStart="12dp"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Предметы"
+                                    android:textColor="@color/text_primary_dark"
+                                    android:textSize="17sp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="2dp"
+                                    android:text="Предметы и привязка к семестрам"
+                                    android:textColor="@color/text_secondary_dark"
+                                    android:textSize="12sp" />
+                            </LinearLayout>
+
+                            <TextView
+                                android:id="@+id/badgeSubjectsCount"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:minWidth="28dp"
+                                android:gravity="center"
+                                android:paddingHorizontal="10dp"
+                                android:paddingVertical="5dp"
+                                android:background="@drawable/bg_catalog_badge"
+                                android:text="0"
+                                android:textColor="@color/accent_tertiary"
+                                android:textSize="13sp"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginTop="14dp"
+                            android:layout_marginBottom="2dp"
+                            android:background="@drawable/bg_catalog_divider" />
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:hint="Группа"
+                            style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                            app:boxBackgroundColor="#0F172A"
+                            app:boxStrokeColor="#334155"
+                            android:visibility="gone">
+
+                            <AutoCompleteTextView
+                                android:id="@+id/subjectGroupDropdown"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:inputType="none"
+                                android:textColor="#FFFFFF" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:orientation="vertical">
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                app:boxBackgroundColor="#0F172A"
+                                app:boxBackgroundMode="filled"
+                                app:boxStrokeColor="#334155">
+
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:id="@+id/subjectInput"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:hint="Новый предмет"
+                                    android:textColor="#FFFFFF" />
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                            <com.google.android.material.button.MaterialButton
+                                android:id="@+id/addSubjectButton"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="12dp"
+                                android:text="Добавить предмет"
+                                android:textAllCaps="false"
+                                android:textColor="@color/white"
+                                app:backgroundTint="@color/accent_emerald"
+                                app:cornerRadius="14dp" />
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginBottom="4dp"
+                            android:background="@drawable/bg_catalog_divider" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:text="Связь предмета с семестром"
+                            android:textColor="@color/text_primary_dark"
+                            android:textSize="15sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:layout_marginBottom="8dp"
+                            android:text="Можно назначить несколько семестров; один семестр — один раз"
+                            android:textColor="@color/text_secondary_dark"
+                            android:textSize="12sp" />
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Выберите предмет"
+                            style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                            app:boxBackgroundColor="#0F172A"
+                            app:boxStrokeColor="#334155">
+
+                            <AutoCompleteTextView
+                                android:id="@+id/subjectAssignDropdown"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:inputType="none"
+                                android:textColor="#FFFFFF" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:hint="Выберите семестр"
+                            style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                            app:boxBackgroundColor="#0F172A"
+                            app:boxStrokeColor="#334155">
+
+                            <AutoCompleteTextView
+                                android:id="@+id/semesterAssignDropdown"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:inputType="none"
+                                android:textColor="#FFFFFF" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/assignSubjectSemesterButton"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="12dp"
+                            android:text="Назначить семестр"
+                            android:textAllCaps="false"
+                            android:textColor="@color/white"
+                            app:backgroundTint="@color/accent_primary_dark"
+                            app:cornerRadius="14dp" />
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/unassignSubjectSemesterButton"
+                            style="@style/Widget.Material3.Button.OutlinedButton"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:text="Отвязать семестр"
+                            android:textAllCaps="false"
+                            android:textColor="#F87171"
+                            app:cornerRadius="14dp"
+                            app:strokeColor="#F87171" />
+
+                        <LinearLayout
+                            android:id="@+id/subjectsContainer"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="12dp"
+                            android:orientation="vertical" />
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="12dp"
+                    app:cardBackgroundColor="@color/surface_card"
+                    app:cardCornerRadius="20dp"
+                    app:cardElevation="4dp"
+                    app:strokeWidth="1dp"
+                    app:strokeColor="@color/border_subtle">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="16dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:gravity="center"
+                                android:text="🗓️"
+                                android:textSize="20sp"
+                                android:background="@drawable/bg_icon_purple" />
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:layout_marginStart="12dp"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Семестры"
+                                    android:textColor="@color/text_primary_dark"
+                                    android:textSize="17sp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="2dp"
+                                    android:text="Номер, даты начала и окончания"
+                                    android:textColor="@color/text_secondary_dark"
+                                    android:textSize="12sp" />
+                            </LinearLayout>
+
+                            <TextView
+                                android:id="@+id/badgeSemestersCount"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:minWidth="28dp"
+                                android:gravity="center"
+                                android:paddingHorizontal="10dp"
+                                android:paddingVertical="5dp"
+                                android:background="@drawable/bg_catalog_badge"
+                                android:text="0"
+                                android:textColor="@color/accent_tertiary"
+                                android:textSize="13sp"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginTop="14dp"
+                            android:layout_marginBottom="2dp"
+                            android:background="@drawable/bg_catalog_divider" />
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:hint="Группа"
+                            style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                            app:boxBackgroundColor="#0F172A"
+                            app:boxStrokeColor="#334155"
+                            android:visibility="gone">
+
+                            <AutoCompleteTextView
+                                android:id="@+id/semesterGroupDropdown"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:inputType="none"
+                                android:textColor="#FFFFFF" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            app:boxBackgroundColor="#0F172A"
+                            app:boxBackgroundMode="filled"
+                            app:boxStrokeColor="#334155">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/semesterNameInput"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:hint="Номер семестра"
+                                android:inputType="number"
+                                android:maxLength="2"
+                                android:textColor="#FFFFFF" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:orientation="horizontal">
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                app:boxBackgroundColor="#0F172A"
+                                app:boxBackgroundMode="filled"
+                                app:boxStrokeColor="#334155">
+
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:id="@+id/startDateInput"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:focusable="false"
+                                    android:hint="Дата начала"
+                                    android:inputType="none"
+                                    android:textColor="#FFFFFF" />
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                            <Space
+                                android:layout_width="8dp"
+                                android:layout_height="1dp" />
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                app:boxBackgroundColor="#0F172A"
+                                app:boxBackgroundMode="filled"
+                                app:boxStrokeColor="#334155">
+
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:id="@+id/endDateInput"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:focusable="false"
+                                    android:hint="Дата конца"
+                                    android:inputType="none"
+                                    android:textColor="#FFFFFF" />
+                            </com.google.android.material.textfield.TextInputLayout>
+                        </LinearLayout>
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/addSemesterButton"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="12dp"
+                            android:text="Добавить семестр"
+                            android:textAllCaps="false"
+                            android:textColor="@color/white"
+                            app:backgroundTint="@color/accent_primary_dark"
+                            app:cornerRadius="14dp" />
+
+                        <LinearLayout
+                            android:id="@+id/semestersContainer"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="12dp"
+                            android:orientation="vertical" />
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginBottom="12dp"
+                    app:cardBackgroundColor="@color/surface_card"
+                    app:cardCornerRadius="20dp"
+                    app:cardElevation="4dp"
+                    app:strokeWidth="1dp"
+                    app:strokeColor="@color/border_subtle">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="16dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:gravity="center"
+                                android:text="🧑‍🏫"
+                                android:textSize="18sp"
+                                android:background="@drawable/bg_icon_orange" />
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:layout_marginStart="12dp"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Преподаватели"
+                                    android:textColor="@color/text_primary_dark"
+                                    android:textSize="17sp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="2dp"
+                                    android:text="Справочник ФИО для вашей группы"
+                                    android:textColor="@color/text_secondary_dark"
+                                    android:textSize="12sp" />
+                            </LinearLayout>
+
+                            <TextView
+                                android:id="@+id/badgeTeachersCount"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:minWidth="28dp"
+                                android:gravity="center"
+                                android:paddingHorizontal="10dp"
+                                android:paddingVertical="5dp"
+                                android:background="@drawable/bg_catalog_badge"
+                                android:text="0"
+                                android:textColor="@color/accent_tertiary"
+                                android:textSize="13sp"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginTop="14dp"
+                            android:layout_marginBottom="2dp"
+                            android:background="@drawable/bg_catalog_divider" />
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            app:boxBackgroundColor="#0F172A"
+                            app:boxBackgroundMode="filled"
+                            app:boxStrokeColor="#334155">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/teacherDirectoryNameInput"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:hint="ФИО преподавателя"
+                                android:textColor="#FFFFFF" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/addTeacherButton"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="12dp"
+                            android:text="Добавить преподавателя"
+                            android:textAllCaps="false"
+                            android:textColor="@color/white"
+                            app:backgroundTint="@color/accent_primary_dark"
+                            app:cornerRadius="14dp" />
+
+                        <LinearLayout
+                            android:id="@+id/teachersContainer"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="12dp"
+                            android:orientation="vertical" />
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginTop="18dp"
+                            android:layout_marginBottom="4dp"
+                            android:background="@drawable/bg_catalog_divider" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:gravity="center"
+                                android:text="🔗"
+                                android:textSize="18sp"
+                                android:background="@drawable/bg_icon_blue" />
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:layout_marginStart="12dp"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Назначения на предметы"
+                                    android:textColor="@color/text_primary_dark"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="2dp"
+                                    android:text="Связь преподавателя с предметом"
+                                    android:textColor="@color/text_secondary_dark"
+                                    android:textSize="12sp" />
+                            </LinearLayout>
+
+                            <TextView
+                                android:id="@+id/badgeBindingsCount"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:minWidth="28dp"
+                                android:gravity="center"
+                                android:paddingHorizontal="10dp"
+                                android:paddingVertical="5dp"
+                                android:background="@drawable/bg_catalog_badge"
+                                android:text="0"
+                                android:textColor="@color/accent_secondary"
+                                android:textSize="13sp"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="12dp"
+                            android:hint="Выберите преподавателя"
+                            style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                            app:boxBackgroundColor="#0F172A"
+                            app:boxStrokeColor="#334155">
+
+                            <AutoCompleteTextView
+                                android:id="@+id/teacherSelectDropdown"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:inputType="none"
+                                android:textColor="#FFFFFF" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:hint="Предмет"
+                            style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                            app:boxBackgroundColor="#0F172A"
+                            app:boxStrokeColor="#334155">
+
+                            <AutoCompleteTextView
+                                android:id="@+id/teacherSubjectDropdown"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:inputType="none"
+                                android:textColor="#FFFFFF" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/addTeacherBindingButton"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="12dp"
+                            android:text="Назначить предмет"
+                            android:textAllCaps="false"
+                            android:textColor="@color/white"
+                            app:backgroundTint="@color/accent_secondary"
+                            app:cornerRadius="14dp" />
+
+                        <LinearLayout
+                            android:id="@+id/teacherBindingsContainer"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="12dp"
+                            android:orientation="vertical" />
+
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:indeterminateTint="#8B5CF6"
+        android:visibility="gone" />
+</FrameLayout>

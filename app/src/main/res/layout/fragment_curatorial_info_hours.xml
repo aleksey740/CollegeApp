@@ -1,0 +1,345 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/bg_app_gradient">
+
+    <LinearLayout
+        android:id="@+id/headerLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:background="@drawable/bg_teacher_header"
+        android:paddingHorizontal="20dp"
+        android:paddingTop="20dp"
+        android:paddingBottom="16dp">
+
+        <ImageButton
+            android:id="@+id/curatorialBackButton"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginEnd="10dp"
+            android:background="@null"
+            android:foreground="@null"
+            android:padding="0dp"
+            android:scaleType="center"
+            android:tint="#FFFFFF"
+            app:srcCompat="@drawable/ic_chevron_left"
+            android:contentDescription="Назад"
+            android:visibility="visible" />
+
+        <TextView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:gravity="center"
+            android:text="⏰"
+            android:textSize="20sp"
+            android:background="@drawable/bg_icon_blue"
+            android:padding="4dp" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_weight="1"
+            android:text="Кураторские и информационные часы"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/curatorialPageScroll"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fillViewport="true"
+        android:clipToPadding="false">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="24dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingHorizontal="20dp"
+                android:paddingTop="14dp">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/addCuratorialButton"
+                    style="@style/Widget.Material3.Button"
+                    android:layout_width="match_parent"
+                    android:layout_height="44dp"
+                    android:text="Кураторский час"
+                    android:textAllCaps="false"
+                    android:textSize="13sp"
+                    android:lines="1"
+                    android:ellipsize="end"
+                    app:cornerRadius="999dp"
+                    app:icon="@drawable/ic_calendar"
+                    app:iconTint="#FFFFFF"
+                    app:iconPadding="6dp"
+                    app:backgroundTint="#8B5CF6" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/addInfoHourButton"
+                    style="@style/Widget.Material3.Button"
+                    android:layout_width="match_parent"
+                    android:layout_height="44dp"
+                    android:layout_marginTop="8dp"
+                    android:text="Информационный час"
+                    android:textAllCaps="false"
+                    android:textSize="13sp"
+                    android:lines="1"
+                    android:ellipsize="end"
+                    app:cornerRadius="999dp"
+                    app:icon="@drawable/ic_calendar"
+                    app:iconTint="#FFFFFF"
+                    app:iconPadding="6dp"
+                    app:backgroundTint="#8B5CF6" />
+            </LinearLayout>
+
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scrollbars="none"
+                android:clipToPadding="false"
+                android:paddingHorizontal="20dp"
+                android:paddingTop="12dp"
+                android:paddingBottom="8dp"
+                android:nestedScrollingEnabled="false">
+
+                <com.google.android.material.chip.ChipGroup
+                    android:id="@+id/filterChipGroup"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:singleSelection="true"
+                    app:chipSpacingHorizontal="8dp">
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/filterAll"
+                        style="@style/Widget.Material3.Chip.Filter"
+                        android:layout_width="wrap_content"
+                        android:layout_height="36dp"
+                        android:text="Все"
+                        android:textColor="#CBD5F5"
+                        android:textSize="13sp"
+                        android:maxLines="1"
+                        app:chipMinTouchTargetSize="0dp"
+                        app:chipMinHeight="36dp"
+                        app:chipCornerRadius="18dp"
+                        app:chipStrokeWidth="1.5dp"
+                        app:chipStrokeColor="#64748B"
+                        app:chipBackgroundColor="@android:color/transparent"
+                        app:checkedIconVisible="false" />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/filterCuratorial"
+                        style="@style/Widget.Material3.Chip.Filter"
+                        android:layout_width="wrap_content"
+                        android:layout_height="36dp"
+                        android:text="Кураторский час"
+                        android:textColor="#CBD5F5"
+                        android:textSize="13sp"
+                        android:maxLines="1"
+                        app:chipMinTouchTargetSize="0dp"
+                        app:chipMinHeight="36dp"
+                        app:chipCornerRadius="18dp"
+                        app:chipStrokeWidth="1.5dp"
+                        app:chipStrokeColor="#64748B"
+                        app:chipBackgroundColor="@android:color/transparent"
+                        app:checkedIconVisible="false" />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/filterInfo"
+                        style="@style/Widget.Material3.Chip.Filter"
+                        android:layout_width="wrap_content"
+                        android:layout_height="36dp"
+                        android:text="Информационный час"
+                        android:textColor="#CBD5F5"
+                        android:textSize="13sp"
+                        android:maxLines="1"
+                        app:chipMinTouchTargetSize="0dp"
+                        app:chipMinHeight="36dp"
+                        app:chipCornerRadius="18dp"
+                        app:chipStrokeWidth="1.5dp"
+                        app:chipStrokeColor="#64748B"
+                        app:chipBackgroundColor="@android:color/transparent"
+                        app:checkedIconVisible="false" />
+                </com.google.android.material.chip.ChipGroup>
+            </HorizontalScrollView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:paddingHorizontal="20dp"
+                android:paddingTop="6dp"
+                android:paddingBottom="6dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Дата: "
+                    android:textColor="#94A3B8"
+                    android:textSize="13sp" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/dateFilterButton"
+                    style="@style/Widget.Material3.Button.OutlinedButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="36dp"
+                    android:minWidth="0dp"
+                    android:minHeight="0dp"
+                    android:paddingHorizontal="12dp"
+                    android:text="Все даты"
+                    android:textAllCaps="false"
+                    android:textSize="13sp"
+                    app:cornerRadius="18dp"
+                    app:strokeColor="#64748B"
+                    app:strokeWidth="1dp"
+                    app:backgroundTint="@android:color/transparent"
+                    app:icon="@drawable/ic_calendar"
+                    app:iconSize="18dp"
+                    app:iconTint="#94A3B8"
+                    app:iconPadding="4dp" />
+            </LinearLayout>
+
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scrollbars="none"
+                android:clipToPadding="false"
+                android:paddingTop="4dp"
+                android:paddingBottom="8dp"
+                android:nestedScrollingEnabled="false">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingHorizontal="20dp"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:id="@+id/statTotalLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Всего: "
+                        android:textColor="#94A3B8"
+                        android:textSize="13sp" />
+
+                    <TextView
+                        android:id="@+id/statTotalValue"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0"
+                        android:textColor="#FFFFFF"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/statCuratorialLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:text="Кураторских: "
+                        android:textColor="#94A3B8"
+                        android:textSize="13sp" />
+
+                    <TextView
+                        android:id="@+id/statCuratorialValue"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0"
+                        android:textColor="#8B5CF6"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/statInfoLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:text="Информационных: "
+                        android:textColor="#94A3B8"
+                        android:textSize="13sp" />
+
+                    <TextView
+                        android:id="@+id/statInfoValue"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0"
+                        android:textColor="#8B5CF6"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </HorizontalScrollView>
+
+            <ProgressBar
+                android:id="@+id/progressBar"
+                style="?android:attr/progressBarStyleLarge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="12dp"
+                android:visibility="gone" />
+
+            <LinearLayout
+                android:id="@+id/emptyContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:orientation="vertical"
+                android:gravity="center_horizontal"
+                android:paddingHorizontal="16dp"
+                android:paddingBottom="16dp">
+
+                <TextView
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:gravity="center"
+                    android:text="⏳"
+                    android:textSize="32sp"
+                    android:background="@drawable/bg_icon_gray" />
+
+                <TextView
+                    android:id="@+id/emptyText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:gravity="center"
+                    android:text="Пока нет запланированных кураторских или информационных часов"
+                    android:textColor="#94A3B8"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:gravity="center"
+                    android:text="Нажмите одну из кнопок сверху, чтобы добавить"
+                    android:textColor="#64748B"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/hoursRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:nestedScrollingEnabled="false"
+                android:clipToPadding="false"
+                android:paddingHorizontal="12dp"
+                android:paddingTop="8dp"
+                android:paddingBottom="12dp" />
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</LinearLayout>

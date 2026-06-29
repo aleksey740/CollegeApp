@@ -1,3 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">CollegeApp</string>
+    
+    <string name="app_name">Помощник куратора</string>
+    <string name="app_description">Приложение для колледжа</string>
+
+    
+    <string name="login">Вход</string>
+    <string name="logout">Выход</string>
+    <string name="save">Сохранить</string>
+    <string name="cancel">Отмена</string>
+    <string name="delete">Удалить</string>
+    <string name="edit">Редактировать</string>
+    <string name="add">Добавить</string>
+    <string name="loading">Загрузка...</string>
+    <string name="error">Ошибка</string>
+    <string name="success">Успешно</string>
+    <string name="sticker_content_description">Стикер</string>
+    <string name="stickers_sheet_title">Стикеры</string>
+    <string name="stickers_open_content_description">Открыть стикеры</string>
+
+    
+    <string name="schedule_title">Расписание занятий</string>
+    <string name="add_schedule">Добавить занятие</string>
+    <string name="edit_schedule">Редактировать занятие</string>
+    <string name="schedule_empty">Нет занятий на этот день</string>
+
+    
+    <string name="monday">Понедельник</string>
+    <string name="tuesday">Вторник</string>
+    <string name="wednesday">Среда</string>
+    <string name="thursday">Четверг</string>
+    <string name="friday">Пятница</string>
+    <string name="saturday">Суббота</string>
+    <string name="sunday">Воскресенье</string>
+
+    
+    <string name="lecture">Лекция</string>
+    <string name="practice">Практика</string>
+    <string name="lab">Лабораторная</string>
+    <string name="seminar">Семинар</string>
+    <string name="consultation">Консультация</string>
+    <string name="exam">Экзамен</string>
+    <string name="test">Зачет</string>
 </resources>

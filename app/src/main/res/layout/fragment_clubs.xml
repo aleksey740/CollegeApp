@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/bg_app_gradient">
+
+    
+    <LinearLayout
+        android:id="@+id/headerLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/bg_calendar_header"
+        android:paddingHorizontal="20dp"
+        android:paddingTop="20dp"
+        android:paddingBottom="16dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <ImageButton
+                android:id="@+id/clubsBackButton"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginEnd="10dp"
+                android:background="@null"
+                android:foreground="@null"
+                android:padding="0dp"
+                android:scaleType="center"
+                android:tint="#FFFFFF"
+                app:srcCompat="@drawable/ic_chevron_left"
+                android:contentDescription="Назад"
+                android:visibility="visible" />
+
+            <TextView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:gravity="center"
+                android:text="🎯"
+                android:textSize="20sp"
+                android:background="@drawable/bg_icon_purple"
+                android:padding="4dp" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:layout_marginStart="12dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Кружки и секции"
+                    android:textColor="#FFFFFF"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:text="Внеучебная деятельность"
+                    android:textColor="#C4B5FD"
+                    android:textSize="12sp"
+                    android:alpha="0.95" />
+            </LinearLayout>
+
+            <ImageButton
+                android:id="@+id/clubsMoreButton"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="12dp"
+                android:background="@null"
+                android:foreground="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="Действия"
+                android:padding="0dp"
+                android:scaleType="center"
+                android:tint="#FFFFFF"
+                app:srcCompat="@drawable/ic_more_horiz"
+                android:visibility="visible" />
+        </LinearLayout>
+
+        
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:scrollbars="none"
+            android:clipToPadding="false">
+
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/tabChipGroup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:singleSelection="true"
+                app:chipSpacingHorizontal="8dp">
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/tabClubsButton"
+                    style="@style/Widget.Material3.Chip.Filter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="36dp"
+                    android:text="Кружки"
+                    android:textColor="#CBD5F5"
+                    android:textSize="13sp"
+                    android:maxLines="1"
+                    app:chipMinTouchTargetSize="0dp"
+                    app:chipMinHeight="36dp"
+                    app:chipCornerRadius="18dp"
+                    app:chipStrokeWidth="1.5dp"
+                    app:chipStrokeColor="#64748B"
+                    app:chipBackgroundColor="@android:color/transparent"
+                    app:checkedIconVisible="false" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/tabSectionsButton"
+                    style="@style/Widget.Material3.Chip.Filter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="36dp"
+                    android:text="Секции"
+                    android:textColor="#CBD5F5"
+                    android:textSize="13sp"
+                    android:maxLines="1"
+                    app:chipMinTouchTargetSize="0dp"
+                    app:chipMinHeight="36dp"
+                    app:chipCornerRadius="18dp"
+                    app:chipStrokeWidth="1.5dp"
+                    app:chipStrokeColor="#64748B"
+                    app:chipBackgroundColor="@android:color/transparent"
+                    app:checkedIconVisible="false" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/tabElectivesButton"
+                    style="@style/Widget.Material3.Chip.Filter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="36dp"
+                    android:text="Факультативы"
+                    android:textColor="#CBD5F5"
+                    android:textSize="13sp"
+                    android:maxLines="1"
+                    app:chipMinTouchTargetSize="0dp"
+                    app:chipMinHeight="36dp"
+                    app:chipCornerRadius="18dp"
+                    app:chipStrokeWidth="1.5dp"
+                    app:chipStrokeColor="#64748B"
+                    app:chipBackgroundColor="@android:color/transparent"
+                    app:checkedIconVisible="false" />
+            </com.google.android.material.chip.ChipGroup>
+        </HorizontalScrollView>
+
+        <TextView
+            android:id="@+id/countText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Найдено: 0"
+            android:textColor="#94A3B8"
+            android:textSize="13sp" />
+    </LinearLayout>
+
+    
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:paddingHorizontal="16dp"
+        android:paddingTop="12dp"
+        android:paddingBottom="12dp">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/clubsRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:paddingBottom="80dp" />
+
+        <LinearLayout
+            android:id="@+id/emptyStateLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:padding="24dp"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:gravity="center"
+                android:text="🎯"
+                android:textSize="32sp"
+                android:background="@drawable/bg_icon_gray" />
+
+            <TextView
+                android:id="@+id/emptyText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:gravity="center"
+                android:text="Здесь пока пусто"
+                android:textColor="#94A3B8"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/emptySubtext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:gravity="center"
+                android:text="Добавьте кружок, секцию или факультатив"
+                android:textColor="#64748B"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="?android:attr/progressBarStyleLarge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:indeterminateTint="#64748B"
+            android:visibility="gone" />
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp">
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/addClubFab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginEnd="20dp"
+            android:contentDescription="Добавить"
+            android:src="@android:drawable/ic_input_add"
+            android:visibility="gone"
+            app:backgroundTint="#8B5CF6"
+            app:tint="#FFFFFF"
+            app:elevation="6dp"
+            app:maxImageSize="28dp"
+            app:shapeAppearance="@style/ShapeAppearance.Material3.Corner.Full" />
+    </FrameLayout>
+</LinearLayout>

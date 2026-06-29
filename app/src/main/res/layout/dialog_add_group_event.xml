@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="✨ Заполните данные мероприятия"
+            android:textSize="13sp"
+            android:textColor="#64748B"
+            android:layout_marginBottom="10dp" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/eventTitleLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="🎉 Название мероприятия">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/eventTitleInput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="8dp">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/eventDateLayout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="📅 Дата">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/eventDateInput"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:focusable="false" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Space
+                android:layout_width="8dp"
+                android:layout_height="1dp" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/eventTimeLayout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="🕒 Время">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/eventTimeInput"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:focusable="false" />
+            </com.google.android.material.textfield.TextInputLayout>
+        </LinearLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/eventPlaceLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:hint="📍 Место проведения">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/eventPlaceInput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:hint="📝 Описание">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/eventDescriptionInput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minLines="3"
+                android:maxLines="5" />
+        </com.google.android.material.textfield.TextInputLayout>
+    </LinearLayout>
+
+</ScrollView>

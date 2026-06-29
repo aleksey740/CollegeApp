@@ -1,0 +1,17 @@
+{
+  "name": "collegeapp-functions",
+  "description": "FCM push при создании уведомлений в Firestore",
+  "main": "index.js",
+  "engines": {
+    "node": "20"
+  },
+  "scripts": {
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "dependencies": {
+    "firebase-admin": "^12.7.0",
+    "firebase-functions": "^5.1.1"
+  },
+  "private": true
+}

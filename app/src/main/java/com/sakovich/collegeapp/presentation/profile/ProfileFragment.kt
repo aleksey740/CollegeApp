@@ -1,27 +1,69 @@
 package com.sakovich.collegeapp.presentation.profile
 
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
+import android.widget.LinearLayout
+import android.widget.ImageButton
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import com.sakovich.collegeapp.R
+import com.sakovich.collegeapp.data.models.User
+import com.sakovich.collegeapp.presentation.legal.PrivacyPolicyFragment
+import com.sakovich.collegeapp.presentation.clubs.ClubReminderScheduler
+import com.sakovich.collegeapp.data.repositories.AbsenceRepository
+import com.sakovich.collegeapp.data.repositories.AdminRepository
+import com.sakovich.collegeapp.data.repositories.GradeRepository
 import com.sakovich.collegeapp.data.repositories.UserRepository
+import com.sakovich.collegeapp.utils.DrawableUtils
+import com.sakovich.collegeapp.utils.SemesterStatsHelper
+import com.sakovich.collegeapp.notifications.NotificationRealtimeManager
+import com.sakovich.collegeapp.presentation.nutrition.MealReminderScheduler
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class ProfileFragment : Fragment() {
 
     private lateinit var auth: FirebaseAuth
     private lateinit var userRepository: UserRepository
+    private lateinit var gradeRepository: GradeRepository
+    private lateinit var absenceRepository: AbsenceRepository
+    private lateinit var adminRepository: AdminRepository
+
+    private lateinit var avatarText: TextView
+    private lateinit var userNameText: TextView
+    private lateinit var userEmailText: TextView
+    private lateinit var userRoleText: TextView
+    private lateinit var userGroupText: TextView
+    private lateinit var profileBackButton: ImageButton
+
+    private lateinit var statisticsContainer: LinearLayout
+    private lateinit var avgGradeValue: TextView
+    private lateinit var gradesCountValue: TextView
+    private lateinit var absencesCountValue: TextView
+
+    private lateinit var personalInfoCard: View
+    private lateinit var addressText: TextView
+    private lateinit var birthDateText: TextView
+    private lateinit var phoneText: TextView
+
+    private lateinit var editPersonalInfoButton: View
+    private lateinit var divider1: View
+    private lateinit var changePasswordButton: View
+    private lateinit var privacyPolicyButton: View
+    private lateinit var logoutButton: View
+
+    private var currentUser: User? = null
 
     companion object {
         private const val TAG = "ProfileFragment"
@@ -40,125 +82,212 @@ class ProfileFragment : Fragment() {
 
         auth = Firebase.auth
         userRepository = UserRepository()
+        gradeRepository = GradeRepository()
+        absenceRepository = AbsenceRepository()
+        adminRepository = AdminRepository()
 
-        val currentUser = auth.currentUser
+        initViews(view)
+        setupClickListeners()
 
-        val userNameText = view.findViewById<TextView>(R.id.userNameText)
-        val userEmailText = view.findViewById<TextView>(R.id.userEmailText)
-        val userRoleText = view.findViewById<TextView>(R.id.userRoleText)
-        val userGroupText = view.findViewById<TextView>(R.id.userGroupText) // Новое поле
-        val logoutButton = view.findViewById<Button>(R.id.logoutButton)
-        val changePasswordButton = view.findViewById<Button>(R.id.changePasswordButton)
-
-        // Временно показываем базовые данные
-        userEmailText.text = "Email: ${currentUser?.email ?: "Неизвестный"}"
-        userNameText.text = "Имя: Загрузка..."
-        userRoleText.text = "Роль: Загрузка..."
-        userGroupText.text = "Группа: Загрузка..."
-
-        // Загружаем полные данные из Firestore
-        if (currentUser != null) {
-            loadUserDataFromFirestore(currentUser.uid, userNameText, userRoleText, userGroupText)
+        val firebaseUser = auth.currentUser
+        if (firebaseUser != null) {
+            userEmailText.text = firebaseUser.email ?: "Неизвестно"
+            loadUserData(firebaseUser.uid)
         } else {
-            showDefaultData(userNameText, userRoleText, userGroupText)
+            showDefaultData()
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        currentUser?.let { user ->
+            if (user.role == "student" || user.role == "headman") {
+                loadStatistics(user)
+            }
+            loadPersonalInfo(user)
+        }
+    }
+
+    private fun initViews(view: View) {
+
+        avatarText = view.findViewById(R.id.avatarText)
+        userNameText = view.findViewById(R.id.userNameText)
+        userEmailText = view.findViewById(R.id.userEmailText)
+        userRoleText = view.findViewById(R.id.userRoleText)
+        userGroupText = view.findViewById(R.id.userGroupText)
+        profileBackButton = view.findViewById(R.id.profileBackButton)
+
+        statisticsContainer = view.findViewById(R.id.statisticsContainer)
+        avgGradeValue = view.findViewById(R.id.avgGradeValue)
+        gradesCountValue = view.findViewById(R.id.gradesCountValue)
+        absencesCountValue = view.findViewById(R.id.absencesCountValue)
+
+        personalInfoCard = view.findViewById(R.id.personalInfoCard)
+        addressText = view.findViewById(R.id.addressText)
+        birthDateText = view.findViewById(R.id.birthDateText)
+        phoneText = view.findViewById(R.id.phoneText)
+
+        editPersonalInfoButton = view.findViewById(R.id.editPersonalInfoButton)
+        divider1 = view.findViewById(R.id.divider1)
+        changePasswordButton = view.findViewById(R.id.changePasswordButton)
+        privacyPolicyButton = view.findViewById(R.id.privacyPolicyButton)
+        logoutButton = view.findViewById(R.id.logoutButton)
+
+        statisticsContainer.visibility = View.GONE
+        personalInfoCard.visibility = View.GONE
+        editPersonalInfoButton.visibility = View.GONE
+        divider1.visibility = View.GONE
+    }
+
+    private fun setupClickListeners() {
+        profileBackButton.setOnClickListener {
+            requireActivity().onBackPressedDispatcher.onBackPressed()
         }
 
-        // Обработчики кнопок
-        logoutButton.setOnClickListener {
-            logoutUser()
+        editPersonalInfoButton.setOnClickListener {
+            openEditPersonalInfoFragment()
         }
 
         changePasswordButton.setOnClickListener {
             changePassword()
         }
+
+        privacyPolicyButton.setOnClickListener {
+            parentFragmentManager.beginTransaction()
+                .replace(R.id.fragment_container, PrivacyPolicyFragment.newInstance())
+                .addToBackStack(null)
+                .commit()
+        }
+
+        logoutButton.setOnClickListener {
+            logoutUser()
+        }
     }
 
-    private fun loadUserDataFromFirestore(
-        userId: String,
-        userNameText: TextView,
-        userRoleText: TextView,
-        userGroupText: TextView
-    ) {
+    private fun loadUserData(userId: String) {
         CoroutineScope(Dispatchers.IO).launch {
             try {
-                Log.d(TAG, "Загрузка данных пользователя из Firestore: $userId")
+                Log.d(TAG, "Загрузка данных пользователя: $userId")
                 val user = userRepository.getUser(userId)
 
-                requireActivity().runOnUiThread {
+                withContext(Dispatchers.Main) {
                     if (user != null) {
-                        Log.d(TAG, "Данные получены: fullName=${user.fullName}, role=${user.role}, groupName=${user.groupName}")
-                        displayUserData(user, userNameText, userRoleText, userGroupText)
+                        currentUser = user
+                        displayUserData(user)
+
+                        if (user.role == "student" || user.role == "headman") {
+                            statisticsContainer.visibility = View.VISIBLE
+                            editPersonalInfoButton.visibility = View.VISIBLE
+                            divider1.visibility = View.VISIBLE
+                            loadStatistics(user)
+                            loadPersonalInfo(user)
+                        }
                     } else {
-                        Log.e(TAG, "Пользователь не найден в Firestore")
-                        showDefaultData(userNameText, userRoleText, userGroupText)
+                        showDefaultData()
                     }
                 }
             } catch (e: Exception) {
-                Log.e(TAG, "Ошибка загрузки из Firestore: ${e.message}", e)
-                requireActivity().runOnUiThread {
-                    showDefaultData(userNameText, userRoleText, userGroupText)
-                    // Показываем Toast с ошибкой
-                    android.widget.Toast.makeText(
-                        requireContext(),
-                        "Ошибка загрузки данных профиля",
-                        android.widget.Toast.LENGTH_SHORT
-                    ).show()
+                Log.e(TAG, "Ошибка загрузки: ${e.message}", e)
+                withContext(Dispatchers.Main) {
+                    showDefaultData()
+                    Toast.makeText(requireContext(), "Ошибка загрузки профиля", Toast.LENGTH_SHORT).show()
                 }
             }
         }
     }
 
-    private fun displayUserData(
-        user: com.sakovich.collegeapp.data.models.User,
-        userNameText: TextView,
-        userRoleText: TextView,
-        userGroupText: TextView
-    ) {
-        // Отображаем полное имя из Firestore
-        val displayName = if (user.fullName.isNullOrEmpty()) "Не указано" else user.fullName
-        userNameText.text = "Имя: $displayName"
+    private fun displayUserData(user: User) {
 
-        // Определяем роль из Firestore
-        val roleText = when {
-            user.teacher || user.role == "teacher" -> "Преподаватель"
-            user.headman || user.role == "headman" -> "Староста"
-            user.student || user.role == "student" -> "Студент"
-            else -> "Роль не указана"
-        }
-        userRoleText.text = "Роль: $roleText"
+        val displayName = user.fullName.ifEmpty { user.email.substringBefore("@") }
+        userNameText.text = displayName
 
-        // Отображаем группу (для преподавателя показываем группу, которую он ведет)
-        val groupDisplay = when {
-            !user.groupName.isNullOrEmpty() -> user.groupName
-            !user.groupId.isNullOrEmpty() -> user.groupId
-            user.teacher || user.role == "teacher" -> "Преподаватель"
-            else -> "Не назначена"
+        val initial = displayName.firstOrNull()?.uppercase() ?: "?"
+        avatarText.text = initial
+
+        val avatarColor = when (user.role) {
+            "teacher" -> "#8B5CF6"
+            "headman" -> "#8B5CF6"
+            "admin" -> "#F59E0B"
+            else -> "#10B981"
         }
-        userGroupText.text = "Группа: $groupDisplay"
+        DrawableUtils.setViewBackgroundColor(avatarText, Color.parseColor(avatarColor))
+
+        userRoleText.text = user.roleBadgeLabel()
+        DrawableUtils.setViewBackgroundColor(userRoleText, Color.parseColor(user.roleBadgeColorHex()))
+
+        if (user.role != "teacher" && user.role != "admin" && user.groupName.isNotEmpty()) {
+            userGroupText.text = user.groupName
+            userGroupText.visibility = View.VISIBLE
+        } else {
+            userGroupText.visibility = View.GONE
+        }
     }
 
-    private fun showDefaultData(
-        userNameText: TextView,
-        userRoleText: TextView,
-        userGroupText: TextView
-    ) {
-        val currentUser = auth.currentUser
+    private fun loadStatistics(user: User) {
+        CoroutineScope(Dispatchers.IO).launch {
+            try {
+                val allGrades = gradeRepository.getStudentGrades(user.id)
+                val visibleGrades = allGrades.filter { SemesterStatsHelper.isVisibleGrade(it) }
+                val grades = SemesterStatsHelper.filterGradesForCurrentSemester(visibleGrades, user, adminRepository)
+                val totalGrades = grades.size
+                val forAvg = grades.filter { !it.isAbsence() }
+                val avgGrade = if (forAvg.isNotEmpty()) {
+                    forAvg.map { it.value.toDouble() }.average()
+                } else 0.0
 
-        // Показываем данные только из Auth (запасной вариант)
-        val displayName = currentUser?.displayName ?: "Не указано"
-        userNameText.text = "Имя: $displayName"
+                val allAbsences = absenceRepository.getStudentAbsences(user.id)
+                val absences = SemesterStatsHelper.filterAbsencesForCurrentSemester(allAbsences, user, adminRepository)
+                val totalAbsenceHours = absences.sumOf { it.hours }
 
-        // Определяем роль по email (запасной вариант)
-        val isTeacher = currentUser?.email?.contains("teacher", ignoreCase = true) == true
-        userRoleText.text = "Роль: ${if (isTeacher) "Преподаватель" else "Студент"}"
-        userGroupText.text = "Группа: Неизвестна"
+                withContext(Dispatchers.Main) {
+                    gradesCountValue.text = totalGrades.toString()
+                    avgGradeValue.text = if (totalGrades > 0) "%.1f".format(avgGrade) else "—"
+                    absencesCountValue.text = "$totalAbsenceHours ч."
+
+                    val gradeColor = when {
+                        avgGrade >= 9 -> "#10B981"
+                        avgGrade >= 7 -> "#A78BFA"
+                        avgGrade >= 5 -> "#F59E0B"
+                        avgGrade > 0 -> "#EF4444"
+                        else -> "#94A3B8"
+                    }
+                    avgGradeValue.setTextColor(Color.parseColor(gradeColor))
+                }
+            } catch (e: Exception) {
+                Log.e(TAG, "Ошибка загрузки статистики: ${e.message}")
+            }
+        }
     }
 
-    private fun logoutUser() {
-        auth.signOut()
-        // Возвращаемся на экран входа
-        requireActivity().finish()
-        startActivity(Intent(requireContext(), requireActivity()::class.java))
+    private fun loadPersonalInfo(user: User) {
+        if (user.address.isNotEmpty() || user.birthDate.isNotEmpty() || user.phone.isNotEmpty()) {
+            personalInfoCard.visibility = View.VISIBLE
+            addressText.text = user.address.ifEmpty { "Не указано" }
+            birthDateText.text = user.birthDate.ifEmpty { "Не указано" }
+            phoneText.text = user.phone.ifEmpty { "Не указано" }
+        } else {
+            personalInfoCard.visibility = View.GONE
+        }
+    }
+
+    private fun showDefaultData() {
+        val email = auth.currentUser?.email ?: "Гость"
+        userNameText.text = email.substringBefore("@")
+        avatarText.text = email.firstOrNull()?.uppercase() ?: "?"
+        userRoleText.text = "🎓 Учащийся"
+        userGroupText.visibility = View.GONE
+        statisticsContainer.visibility = View.GONE
+        personalInfoCard.visibility = View.GONE
+        editPersonalInfoButton.visibility = View.GONE
+        divider1.visibility = View.GONE
+    }
+
+    private fun openEditPersonalInfoFragment() {
+        val editFragment = EditPersonalInfoFragment.newInstance()
+        parentFragmentManager.beginTransaction()
+            .replace(R.id.fragment_container, editFragment)
+            .addToBackStack(null)
+            .commit()
     }
 
     private fun changePassword() {
@@ -167,25 +296,31 @@ class ProfileFragment : Fragment() {
             auth.sendPasswordResetEmail(email)
                 .addOnCompleteListener { task ->
                     if (task.isSuccessful) {
-                        android.widget.Toast.makeText(
+                        Toast.makeText(
                             requireContext(),
                             "Письмо для смены пароля отправлено на $email",
-                            android.widget.Toast.LENGTH_LONG
+                            Toast.LENGTH_LONG
                         ).show()
                     } else {
-                        android.widget.Toast.makeText(
+                        Toast.makeText(
                             requireContext(),
                             "Ошибка: ${task.exception?.message}",
-                            android.widget.Toast.LENGTH_LONG
+                            Toast.LENGTH_LONG
                         ).show()
                     }
                 }
         } else {
-            android.widget.Toast.makeText(
-                requireContext(),
-                "Email не найден",
-                android.widget.Toast.LENGTH_SHORT
-            ).show()
+            Toast.makeText(requireContext(), "Email не найден", Toast.LENGTH_SHORT).show()
         }
+    }
+
+    private fun logoutUser() {
+
+        MealReminderScheduler.cancelAll(requireContext())
+        ClubReminderScheduler.cancelAll(requireContext())
+        NotificationRealtimeManager.stop()
+        auth.signOut()
+        requireActivity().finish()
+        startActivity(Intent(requireContext(), requireActivity()::class.java))
     }
 }

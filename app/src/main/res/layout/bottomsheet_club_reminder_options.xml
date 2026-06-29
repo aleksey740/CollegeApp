@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="20dp"
+    android:background="@drawable/bg_app_gradient">
+
+    <TextView
+        android:id="@+id/sheetTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Напоминания о кружках и секциях"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <com.google.android.material.checkbox.MaterialCheckBox
+        android:id="@+id/club24hCheckBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="За 24 часа"
+        android:textColor="#CBD5F5"
+        app:buttonTint="#8B5CF6"
+        android:layout_marginTop="14dp" />
+
+    <com.google.android.material.checkbox.MaterialCheckBox
+        android:id="@+id/club2hCheckBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="За 2 часа"
+        android:textColor="#CBD5F5"
+        app:buttonTint="#8B5CF6"
+        android:layout_marginTop="8dp" />
+
+    <com.google.android.material.checkbox.MaterialCheckBox
+        android:id="@+id/club30mCheckBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="За 30 минут"
+        android:textColor="#CBD5F5"
+        app:buttonTint="#8B5CF6"
+        android:layout_marginTop="8dp" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/applyClubReminderButton"
+        style="@style/Widget.Material3.Button"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginTop="18dp"
+        android:text="Применить"
+        android:textAllCaps="false"
+        app:cornerRadius="14dp"
+        app:backgroundTint="#8B5CF6" />
+</LinearLayout>

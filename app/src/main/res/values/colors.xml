@@ -2,34 +2,130 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="grade_5">#4CAF50</color>
-    <color name="grade_4">#8BC34A</color>
-    <color name="grade_3">#FFC107</color>
-    <color name="grade_2">#F44336</color>
+    
+    
+    
+    
+    
+    
+    
+    <color name="accent_primary">#A78BFA</color>         
+    <color name="accent_primary_dark">#8B5CF6</color>    
+    <color name="accent_secondary">#818CF8</color>       
+    <color name="accent_tertiary">#C4B5FD</color>        
+    
+    
+    <color name="accent_cyan">#22D3EE</color>            
+    <color name="accent_emerald">#34D399</color>         
+    <color name="accent_amber">#FBBF24</color>           
+    <color name="accent_rose">#FB7185</color>            
+    
+    
+    <color name="surface_card">#1E293B</color>           
+    <color name="surface_card_elevated">#334155</color>  
+    <color name="surface_overlay">#0F172A</color>        
+    <color name="surface_glass">#1E293B99</color>        
+    
+    
+    <color name="border_subtle">#334155</color>          
+    <color name="border_accent">#6366F1</color>          
+    <color name="border_glow">#8B5CF640</color>          
+    
+    
+    <color name="text_primary_dark">#F8FAFC</color>      
+    <color name="text_secondary_dark">#94A3B8</color>    
+    <color name="text_muted">#64748B</color>             
+    <color name="text_accent">#C4B5FD</color>            
+    
+    
+    
+    <color name="grade_5">#34D399</color>
+    <color name="grade_4">#4ADE80</color>
+    <color name="grade_3">#FBBF24</color>
+    <color name="grade_2">#FB7185</color>
+    
+    
+    <color name="grade_excellent">#34D399</color>    
+    <color name="grade_good">#4ADE80</color>          
+    <color name="grade_satisfactory">#FBBF24</color>  
+    <color name="grade_poor">#FB923C</color>          
+    <color name="grade_fail">#FB7185</color>          
     <color name="light_gray">#F0F0F0</color>
 
-    <color name="purple_200">#FFBB86FC</color>
-    <color name="purple_500">#FF6200EE</color>
-    <color name="purple_700">#FF3700B3</color>
-    <color name="teal_200">#FF03DAC5</color>
-    <color name="teal_700">#FF018786</color>
+    <color name="purple_200">#C4B5FD</color>
+    <color name="purple_500">#8B5CF6</color>
+    <color name="purple_700">#6D28D9</color>
+    <color name="teal_200">#5EEAD4</color>
+    <color name="teal_700">#0F766E</color>
 
-    <!-- Цвета для типов событий -->
-    <color name="lecture_color">#FF4CAF50</color>
-    <color name="practice_color">#FF2196F3</color>
-    <color name="exam_color">#FFF44336</color>
-    <color name="meeting_color">#FFFF9800</color>
-    <color name="holiday_color">#FF9C27B0</color>
-    <color name="other_color">#FF607D8B</color>
+    
+    <color name="lecture_color">#34D399</color>
+    <color name="practice_color">#818CF8</color>
+    <color name="exam_color">#FB7185</color>
+    <color name="control_work_color">#EAB308</color>
+    <color name="lunch_color">#FB923C</color>
+    <color name="meeting_color">#FBBF24</color>
+    <color name="holiday_color">#A78BFA</color>
+    <color name="other_color">#94A3B8</color>
 
-    <color name="schedule_monday">#FFF8BBD0</color>
-    <color name="schedule_tuesday">#FFBBDEFB</color>
-    <color name="schedule_wednesday">#FFC8E6C9</color>
-    <color name="schedule_thursday">#FFF0F4C3</color>
-    <color name="schedule_friday">#FFFFF9C4</color>
-    <color name="schedule_saturday">#FFE1BEE7</color>
+    
+    <color name="schedule_monday">#312E81</color>
+    <color name="schedule_tuesday">#1E3A5F</color>
+    <color name="schedule_wednesday">#14532D</color>
+    <color name="schedule_thursday">#422006</color>
+    <color name="schedule_friday">#431407</color>
+    <color name="schedule_saturday">#4C1D95</color>
 
-    <color name="time_slot_morning">#FFE3F2FD</color>
-    <color name="time_slot_day">#FFF3E5F5</color>
-    <color name="time_slot_evening">#FFF1F8E9</color>
+    <color name="time_slot_morning">#1E3A5F</color>
+    <color name="time_slot_day">#312E81</color>
+    <color name="time_slot_evening">#14532D</color>
+
+    <color name="background">#020617</color>
+    <color name="primary">#8B5CF6</color>
+    <color name="secondary">#A78BFA</color>
+    <color name="gray">#64748B</color>
+
+    
+    <color name="primary_dark">#6D28D9</color>
+    <color name="primary_light">#C4B5FD</color>
+
+    
+    <color name="accent">#A78BFA</color>
+
+    <color name="seminar_color">#A78BFA</color>
+    <color name="consultation_color">#22D3EE</color>
+
+    <color name="credit_color">#FB923C</color>
+    
+    
+    <color name="surface">#1E293B</color>
+
+    
+    <color name="text_primary">#F8FAFC</color>
+    <color name="text_secondary">#94A3B8</color>
+    <color name="text_hint">#64748B</color>
+
+    <color name="lab_color">#FB923C</color>
+
+    
+    <color name="group_color_1">#1E3A5F</color>
+    <color name="group_color_2">#312E81</color>
+    <color name="group_color_3">#14532D</color>
+    <color name="group_color_4">#422006</color>
+    <color name="group_color_5">#4C1D95</color>
+    <color name="group_color_6">#1E3A5F</color>
+
+    
+    <color name="notification_unread_bg">#312E81</color>
+    <color name="notification_unread_text">#A78BFA</color>
+    <color name="notification_read_text">#64748B</color>
+
+    
+    <color name="dialog_surface">#1E293B</color>
+    <color name="dialog_surface_light">#F8FAFC</color>
+    <color name="dialog_button_primary">#64748B</color>
+    <color name="dialog_button_positive">#8B5CF6</color>
+    <color name="dialog_text_primary">#F1F5F9</color>
+    <color name="dialog_text_secondary">#94A3B8</color>
+
 </resources>

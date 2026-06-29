@@ -1,136 +1,256 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="24dp">
+    android:background="@drawable/bg_app_gradient">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <TextView
+        
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Выставление оценки"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            android:gravity="center"
-            android:layout_marginBottom="24dp" />
-
-        <!-- Информация о студенте -->
-        <com.google.android.material.card.MaterialCardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="24dp">
+            android:orientation="vertical"
+            android:background="@drawable/bg_grades_header"
+            android:paddingHorizontal="20dp"
+            android:paddingTop="24dp"
+            android:paddingBottom="20dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="16dp">
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
 
                 <TextView
-                    android:id="@+id/studentNameText"
-                    android:layout_width="match_parent"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:gravity="center"
+                    android:text="📝"
+                    android:textSize="28sp"
+                    android:background="@drawable/bg_icon_green" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="Студент: "
-                    android:textSize="16sp"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:layout_marginStart="16dp">
+
+                    <TextView
+                        android:id="@+id/titleText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Выставление отметки"
+                        android:textSize="22sp"
+                        android:textStyle="bold"
+                        android:textColor="#FFFFFF" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Заполните форму"
+                        android:textSize="13sp"
+                        android:textColor="#94A3B8"
+                        android:layout_marginTop="2dp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="-16dp"
+            android:layout_marginBottom="16dp"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="8dp"
+            app:cardBackgroundColor="#1E293B">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="20dp"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:id="@+id/avatarText"
+                    android:layout_width="56dp"
+                    android:layout_height="56dp"
+                    android:gravity="center"
+                    android:text="ИА"
+                    android:textSize="20sp"
                     android:textStyle="bold"
-                    android:layout_marginBottom="8dp" />
+                    android:textColor="#FFFFFF"
+                    android:background="@drawable/bg_avatar_circle" />
 
-                <TextView
-                    android:id="@+id/groupNameText"
-                    android:layout_width="match_parent"
+                <LinearLayout
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="Группа: "
-                    android:textSize="14sp" />
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:layout_marginStart="16dp">
+
+                    <TextView
+                        android:id="@+id/studentNameText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Учащийся"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:textColor="#FFFFFF"
+                        android:maxLines="1"
+                        android:ellipsize="end" />
+
+                    <TextView
+                        android:id="@+id/groupNameText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Группа"
+                        android:textSize="14sp"
+                        android:textColor="#94A3B8"
+                        android:layout_marginTop="2dp"
+                        android:maxLines="1"
+                        android:ellipsize="end" />
+
+                </LinearLayout>
 
             </LinearLayout>
 
         </com.google.android.material.card.MaterialCardView>
 
-        <!-- Форма оценки -->
+        
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginBottom="24dp"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="8dp"
+            app:cardBackgroundColor="#1E293B">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="16dp">
+                android:padding="20dp">
 
-                <!-- Предмет -->
-                <TextView
+                
+                <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Предмет"
-                    android:textSize="14sp"
-                    android:textStyle="bold"
-                    android:layout_marginBottom="8dp" />
+                    android:hint="📚 Предмет"
+                    android:layout_marginBottom="16dp"
+                    style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                    app:boxCornerRadiusTopStart="12dp"
+                    app:boxCornerRadiusTopEnd="12dp"
+                    app:boxCornerRadiusBottomStart="12dp"
+                    app:boxCornerRadiusBottomEnd="12dp"
+                    app:boxStrokeColor="#10B981"
+                    app:hintTextColor="#94A3B8">
 
-                <Spinner
-                    android:id="@+id/subjectSpinner"
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/subjectEditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="#FFFFFF"
+                        android:inputType="text" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                
+                <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="16dp" />
+                    android:hint="🎯 Отметка (1-10)"
+                    android:layout_marginBottom="16dp"
+                    style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                    app:boxCornerRadiusTopStart="12dp"
+                    app:boxCornerRadiusTopEnd="12dp"
+                    app:boxCornerRadiusBottomStart="12dp"
+                    app:boxCornerRadiusBottomEnd="12dp"
+                    app:boxStrokeColor="#10B981"
+                    app:hintTextColor="#94A3B8">
 
-                <!-- Оценка -->
-                <TextView
+                    <AutoCompleteTextView
+                        android:id="@+id/gradeDropdown"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="#FFFFFF"
+                        android:inputType="none" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                
+                <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Оценка"
-                    android:textSize="14sp"
-                    android:textStyle="bold"
-                    android:layout_marginBottom="8dp" />
+                    android:hint="📋 Тип работы"
+                    android:layout_marginBottom="16dp"
+                    style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                    app:boxCornerRadiusTopStart="12dp"
+                    app:boxCornerRadiusTopEnd="12dp"
+                    app:boxCornerRadiusBottomStart="12dp"
+                    app:boxCornerRadiusBottomEnd="12dp"
+                    app:boxStrokeColor="#10B981"
+                    app:hintTextColor="#94A3B8">
 
-                <Spinner
-                    android:id="@+id/gradeSpinner"
+                    <AutoCompleteTextView
+                        android:id="@+id/typeDropdown"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="#FFFFFF"
+                        android:inputType="none" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                
+                <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="16dp" />
+                    android:hint="💬 Комментарий (необязательно)"
+                    android:layout_marginBottom="24dp"
+                    style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                    app:boxCornerRadiusTopStart="12dp"
+                    app:boxCornerRadiusTopEnd="12dp"
+                    app:boxCornerRadiusBottomStart="12dp"
+                    app:boxCornerRadiusBottomEnd="12dp"
+                    app:boxStrokeColor="#10B981"
+                    app:hintTextColor="#94A3B8">
 
-                <!-- Тип работы -->
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Тип работы"
-                    android:textSize="14sp"
-                    android:textStyle="bold"
-                    android:layout_marginBottom="8dp" />
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/commentEditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="100dp"
+                        android:textColor="#FFFFFF"
+                        android:gravity="top"
+                        android:inputType="textMultiLine" />
 
-                <Spinner
-                    android:id="@+id/typeSpinner"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="16dp" />
+                </com.google.android.material.textfield.TextInputLayout>
 
-                <!-- Комментарий -->
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Комментарий"
-                    android:textSize="14sp"
-                    android:textStyle="bold"
-                    android:layout_marginBottom="8dp" />
-
-                <EditText
-                    android:id="@+id/commentEditText"
-                    android:layout_width="match_parent"
-                    android:layout_height="100dp"
-                    android:hint="Введите комментарий к оценке..."
-                    android:gravity="top"
-                    android:inputType="textMultiLine"
-                    android:layout_marginBottom="24dp" />
-
-                <!-- Кнопка сохранения -->
-                <Button
+                
+                <com.google.android.material.button.MaterialButton
                     android:id="@+id/saveButton"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="💾 Сохранить оценку"
-                    android:textSize="16sp" />
+                    android:layout_height="56dp"
+                    android:text="💾 Сохранить отметку"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="#FFFFFF"
+                    app:cornerRadius="16dp"
+                    app:backgroundTint="#10B981"
+                    app:icon="@android:drawable/ic_menu_save"
+                    app:iconGravity="textStart"
+                    app:iconTint="#FFFFFF" />
 
                 <ProgressBar
                     android:id="@+id/progressBar"
@@ -138,6 +258,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginTop="16dp"
+                    android:indeterminateTint="#10B981"
                     android:visibility="gone" />
 
             </LinearLayout>

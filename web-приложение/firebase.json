@@ -1,0 +1,32 @@
+{
+  "hosting": {
+    "site": "assistant-curator",
+    "public": ".",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**",
+      "README.md"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ],
+    "headers": [
+      {
+        "source": "/index.html",
+        "headers": [{ "key": "Cache-Control", "value": "no-cache, no-store, must-revalidate" }]
+      },
+      {
+        "source": "**/*.@(js|css)",
+        "headers": [{ "key": "Cache-Control", "value": "no-cache, must-revalidate" }]
+      },
+      {
+        "source": "**/*.@(png|jpg|jpeg|gif|svg|webp|json|woff2)",
+        "headers": [{ "key": "Cache-Control", "value": "public, max-age=86400" }]
+      }
+    ]
+  }
+}

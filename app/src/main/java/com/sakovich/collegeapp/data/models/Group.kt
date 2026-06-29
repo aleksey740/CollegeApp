@@ -2,9 +2,10 @@ package com.sakovich.collegeapp.data.models
 
 data class Group(
     val id: String = "",
-    val name: String = "", // "ИТ-21", "ФИЗ-22"
-    val curatorId: String = "", // ID преподавателя-куратора
-    val studentCount: Int = 0
+    val name: String = "",
+    val curatorId: String = "",
+    val studentCount: Int = 0,
+    val headmanName: String = ""
 ) {
-    constructor() : this("", "", "", 0)
+    constructor() : this("", "", "", 0, "")
 }
